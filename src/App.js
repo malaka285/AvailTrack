@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AdminDashboard from './AdminDashboard';
+import UserDashboard from './UserDashboard';
+import Login from './Login'; // Pastikan ini diimpor
+import Profile from './Profile';
+import Register from './Register';
+import {Notifikasi} from './Notif';
+import DomainList from './DomainList';
+import ProfileUser from './ProfileUser';
+import ManajementUser from './UserManagement';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/user" element={<UserDashboard />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile-user" element={<ProfileUser />} />
+                <Route path="/login" element={<Login />} /> {/* Pastikan ini ada */}
+                <Route path="/register" element={<Register />} />
+                <Route path="/daftar-domain" element={<DomainList />} />
+                <Route path="/manajemen-user" element={<ManajementUser />} />
+                <Route path="/" element={<Login />} /> 
+                {/* <Route path="/" element={<Notifikasi />} />  */}
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
